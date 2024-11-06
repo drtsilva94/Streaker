@@ -115,3 +115,4 @@ function saveStreaks() {
 
 // Inicializa a exibição das streaks
 renderStreaks();
+

@@ -10,6 +10,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Botão para mostrar/ocultar a barra lateral -->
+    <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+
+    <!-- Barra lateral -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+            <div class="user-photo">
+                <!-- Substitua a URL abaixo pela foto do usuário -->
+                <img src="images/Aggretsuko.png" alt="Foto do Usuário">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Configurações</a></li>
+                    <!-- Adicione outros itens conforme necessário -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+
     <!-- Contêiner principal da aplicação -->
     <div id="app">
         <h1>Streaker</h1> <!-- Título principal da página -->
@@ -26,5 +46,11 @@
 
     <!-- Importação do arquivo JavaScript para manipulação de dados e eventos na página -->
     <script src="script.js"></script>
+    <script>
+        // Função para mostrar/ocultar a barra lateral
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("active");
+        }
+    </script>
 </body>
 </html>

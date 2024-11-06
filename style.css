@@ -60,8 +60,8 @@ button {
 .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    padding: 10px;
+    gap: 4px; /* Reduz o espaçamento entre as células */
+    padding: 8px; /* Ajuste no padding */
 }
 
 /* Estilo de cada dia no calendário */
@@ -77,15 +77,6 @@ button {
     color: #333;
     font-size: 0.9em; /* Ajusta o tamanho da fonte para caber melhor */
 }
-
-/* Estilo do calendário compacto */
-.calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px; /* Reduz o espaçamento entre as células */
-    padding: 8px; /* Ajuste no padding */
-}
-
 
 /* Estilo para os dias com check-in */
 .checked {
@@ -179,4 +170,79 @@ button {
 
 #checkin-filters button:hover {
     background-color: #FFB6C1;
+}
+
+/* Botão para mostrar/ocultar a barra lateral */
+#toggle-sidebar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Fica sobre outros elementos */
+}
+
+/* Estilo da barra lateral */
+.sidebar {
+    position: fixed;
+    left: -250px; /* Oculta a barra lateral inicialmente */
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    transition: 0.3s;
+    overflow-x: hidden;
+    padding-top: 20px;
+    z-index: 999;
+}
+
+.sidebar.active {
+    left: 0; /* Exibe a barra lateral quando ativo */
+}
+
+/* Conteúdo da barra lateral */
+.sidebar-content {
+    text-align: center;
+}
+
+.user-photo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    padding: 15px 0;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.sidebar nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Ajuste para o conteúdo principal quando a barra lateral está ativa */
+#app {
+    margin-left: 0;
+    transition: margin-left 0.3s;
+}
+
+.sidebar.active ~ #app {
+    margin-left: 250px; /* Move o conteúdo para a direita quando a barra lateral está ativa */
 }
