@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Streak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="streak-details">
+        <h1 id="streak-name">Nome da Streak</h1>
+
+        <!-- Botões para editar e excluir a streak -->
+        <div class="streak-buttons">
+            <button onclick="editStreak()">Editar Streak</button>
+            <button onclick="deleteStreak()">Excluir Streak</button>
+        </div>
+
+        <!-- Calendário da Streak -->
+        <div id="calendar-container">
+            <h2>Calendário de Check-ins</h2>
+            <div id="calendar-header">
+                <button onclick="prevMonth()">Mês Anterior</button>
+                <span id="month-year"></span>
+                <button onclick="nextMonth()">Próximo Mês</button>
+            </div>
+            <table id="calendar">
+                <thead>
+                    <tr>
+                        <th>Seg</th>
+                        <th>Ter</th>
+                        <th>Qua</th>
+                        <th>Qui</th>
+                        <th>Sex</th>
+                        <th>Sáb</th>
+                        <th>Dom</th>
+                    </tr>
+                </thead>
+                <tbody id="calendar-body">
+                    <!-- Dias serão gerados pelo JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Contador de Check-ins -->
+        <div id="checkin-count">
+            <h2>Total de Check-ins:</h2>
+            <p id="checkin-total">0 dias</p>
+        </div>
+    </div>
+
+    <script src="streak.js"></script>
+</body>
+</html>
