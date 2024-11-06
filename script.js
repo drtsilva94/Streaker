@@ -1,3 +1,4 @@
+// Carrega streaks do localStorage ou inicializa com um array vazio
 let streaks = JSON.parse(localStorage.getItem('streaks')) || [];
 
 // Função para exibir o prompt para adicionar uma nova streak
@@ -12,17 +13,17 @@ function showAddStreakPrompt() {
 function addStreak(name) {
     const newStreak = {
         name: name,
-        checkDates: []
+        checkDates: [] // Array para armazenar as datas de check-ins
     };
     streaks.push(newStreak);
-    localStorage.setItem('streaks', JSON.stringify(streaks));
-    renderStreaks();
+    saveStreaks(); // Salva as streaks no localStorage
+    renderStreaks(); // Atualiza a exibição das streaks
 }
 
 // Função para renderizar todas as streaks na tela
 function renderStreaks() {
     const container = document.getElementById('streaks-container');
-    container.innerHTML = ''; // Limpa o contêiner para renderizar novamente
+    container.innerHTML = ''; // Limpa o contêiner antes de re-renderizar
 
     streaks.forEach((streak, index) => {
         const streakElement = document.createElement('div');
@@ -31,29 +32,29 @@ function renderStreaks() {
         // Nome da streak com link para página de detalhes
         const title = document.createElement('h2');
         title.innerText = streak.name;
-        title.onclick = () => goToStreakDetails(index);
+        title.onclick = () => goToStreakDetails(index); // Função para redirecionar para detalhes
         title.style.cursor = 'pointer';
         streakElement.appendChild(title);
 
         // Calendário da streak
         const calendar = document.createElement('div');
         calendar.classList.add('calendar');
-        renderCalendar(calendar, streak, index);
+        renderCalendar(calendar, streak, index); // Função para renderizar o calendário
         streakElement.appendChild(calendar);
 
         // Contador de check-ins
         const streakFooter = document.createElement('div');
         streakFooter.classList.add('streak-footer');
-        streakFooter.innerText = `${streak.checkDates.length} dias`;
+        streakFooter.innerText = `${streak.checkDates.length} dias`; // Exibe o total de check-ins
         streakElement.appendChild(streakFooter);
 
         container.appendChild(streakElement);
     });
 }
 
+// Função para renderizar o calendário de uma streak específica
 function renderCalendar(calendar, streak, index) {
-    // Limpa o calendário antes de re-renderizar
-    calendar.innerHTML = '';
+    calendar.innerHTML = ''; // Limpa o calendário antes de re-renderizar
 
     const today = new Date();
     const currentMonth = today.getMonth();
@@ -62,7 +63,7 @@ function renderCalendar(calendar, streak, index) {
     const firstDay = new Date(currentYear, currentMonth, 1).getDay();
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    // Cria células vazias no início do mês
+    // Células vazias no início do mês
     for (let i = 0; i < firstDay; i++) {
         const emptyCell = document.createElement('div');
         emptyCell.classList.add('calendar-day');
@@ -80,30 +81,36 @@ function renderCalendar(calendar, streak, index) {
 
         // Verifica se o dia tem check-in
         if (streak.checkDates.includes(date)) {
-            cell.classList.add('checked');
+            cell.classList.add('checked'); // Marca o dia com check-in
         }
 
-        // Adiciona evento de clique para registrar o check-in
-        cell.onclick = () => {
-            if (!streak.checkDates.includes(date)) {
-                streak.checkDates.push(date);
-                localStorage.setItem('streaks', JSON.stringify(streaks));
-                renderCalendar(calendar, streak, index); // Re-renderiza o calendário para atualizar a visualização
-            } else {
-                alert("Check-in já registrado para este dia!");
-            }
-        };
+        // Evento de clique para registrar o check-in
+        cell.onclick = () => handleCheckIn(date, streak, calendar, index);
 
         calendar.appendChild(cell);
     }
 }
 
-
+// Função para manipular o check-in de um dia específico
+function handleCheckIn(date, streak, calendar, index) {
+    if (!streak.checkDates.includes(date)) {
+        streak.checkDates.push(date); // Adiciona check-in se não houver ainda
+        saveStreaks(); // Salva mudanças no localStorage
+        renderCalendar(calendar, streak, index); // Re-renderiza o calendário
+    } else {
+        alert("Check-in já registrado para este dia!"); // Informa ao usuário
+    }
+}
 
 // Função para ir para a página de detalhes da streak
 function goToStreakDetails(index) {
-    localStorage.setItem('selectedStreakIndex', index);
-    window.location.href = 'streak.html';
+    localStorage.setItem('selectedStreakIndex', index); // Salva índice da streak selecionada
+    window.location.href = 'streak.html'; // Redireciona para streak.html
+}
+
+// Função para salvar as streaks no localStorage
+function saveStreaks() {
+    localStorage.setItem('streaks', JSON.stringify(streaks));
 }
 
 // Inicializa a exibição das streaks
