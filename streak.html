@@ -8,6 +8,9 @@
 </head>
 <body>
     <div id="streak-details">
+        <!-- Botão para voltar para a página inicial -->
+        <button onclick="goBack()" class="back-button">Voltar para a Página Inicial</button>
+
         <h1 id="streak-name">Nome da Streak</h1>
 
         <!-- Botões para editar e excluir a streak -->
@@ -50,5 +53,11 @@
     </div>
 
     <script src="streak.js"></script>
+    <script>
+        // Função para voltar à página inicial
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
 </html>
