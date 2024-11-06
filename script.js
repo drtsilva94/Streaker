@@ -116,3 +116,24 @@ function saveStreaks() {
 // Inicializa a exibição das streaks
 renderStreaks();
 
+// Exibe ou oculta o contêiner de seleção de imagem
+function toggleImageSelection() {
+    const imageSelection = document.getElementById('image-selection');
+    imageSelection.classList.toggle('hidden');
+}
+
+// Define a imagem de perfil escolhida pelo usuário
+function selectProfilePicture(imageSrc) {
+    document.getElementById('profile-picture').src = imageSrc;
+    localStorage.setItem('profilePicture', imageSrc); // Salva a escolha no localStorage
+    toggleImageSelection(); // Oculta o contêiner após a escolha
+}
+
+// Carrega a imagem de perfil salva no localStorage ao carregar a página
+window.onload = function() {
+    const savedProfilePicture = localStorage.getItem('profilePicture');
+    if (savedProfilePicture) {
+        document.getElementById('profile-picture').src = savedProfilePicture;
+    }
+    renderStreaks(); // Carrega as streaks também
+};

@@ -16,18 +16,35 @@
     <!-- Barra lateral -->
     <div id="sidebar" class="sidebar">
         <div class="sidebar-content">
+            <!-- Foto do usuário; ao clicar, exibe opções de imagens -->
             <div class="user-photo">
-                <!-- Substitua a URL abaixo pela foto do usuário -->
-                <img src="images/Aggretsuko.png" alt="Foto do Usuário">
+                <img id="profile-picture" src="images/Chococat.webp" alt="Foto do Usuário" onclick="toggleImageSelection()">
             </div>
             <nav>
                 <ul>
                     <li><a href="#">Categorias</a></li>
                     <li><a href="#">Configurações</a></li>
-                    <!-- Adicione outros itens conforme necessário -->
                 </ul>
             </nav>
         </div>
+    </div>
+
+     <!-- Contêiner de seleção de imagem -->
+     <div id="image-selection" class="image-selection hidden">
+        <h2>Escolha sua foto de perfil</h2>
+        <div class="image-options">
+            <img src="images/Chococat.webp" alt="Chococat" onclick="selectProfilePicture('images/Chococat.webp')">
+            <img src="images/Badtz Maru.png" alt="Badtz" onclick="selectProfilePicture('images/Badtz Maru.png')">
+            <img src="images/Cinnamoroll.jpg" alt="Cinnamoroll" onclick="selectProfilePicture('images/Cinnamoroll.jpg')">
+            <img src="images/Kuromi.jpg" alt="Kuromi" onclick="selectProfilePicture('images/Kuromi.jpg')">
+            <img src="images/Keroppi.png" alt="Keroppi" onclick="selectProfilePicture('images/Keroppi.png')">
+            <img src="images/Aggretsuko.png" alt="Aggretsuko" onclick="selectProfilePicture('images/Aggretsuko.png')">
+            <img src="images/Hello Kitty.png" alt="Hello Kitty" onclick="selectProfilePicture('images/Hello Kitty.png')">
+            <img src="images/My Melody.jpg" alt="My Melody" onclick="selectProfilePicture('images/My Melody.jpg')">
+            <img src="images/Pochacco.png" alt="Pochacco" onclick="selectProfilePicture('images/Pochacco.pngp')">
+            <img src="images/Pompompurin.jpg" alt="Pompompurin" onclick="selectProfilePicture('images/Pompompurin.jpg')">
+        </div>
+        <button onclick="toggleImageSelection()">Fechar</button>
     </div>
 
     <!-- Contêiner principal da aplicação -->

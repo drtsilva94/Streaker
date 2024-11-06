@@ -246,3 +246,47 @@ button {
 .sidebar.active ~ #app {
     margin-left: 250px; /* Move o conteúdo para a direita quando a barra lateral está ativa */
 }
+
+/* Estilo para o contêiner de seleção de imagem */
+.image-selection {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    width: 300px;
+    text-align: center;
+}
+
+.image-selection.hidden {
+    display: none;
+}
+
+.image-selection h2 {
+    margin-bottom: 10px;
+}
+
+.image-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.image-options img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+
+.image-options img:hover {
+    border-color: #4CAF50;
+}
