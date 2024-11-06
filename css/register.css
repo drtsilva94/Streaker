@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+}
+
+.left-section {
+    flex: 1;
+    background-color: #007bff;
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.left-section img {
+    width: 100%;
+    max-width: 250px; /* Ajuste este valor conforme necessário */
+    height: auto;
+    margin: 20px auto;
+    display: block;
+}
+
+
+.right-section {
+    flex: 1;
+    padding: 40px;
+}
+
+.right-section h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.google-signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.google-signup span {
+    margin-right: 10px;
+}
+
+.google-btn {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    color: #555;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.login-option {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 30px; /* Aumenta a distância entre o botão Login e o título */
+}
+
+.login-btn {
+    background-color: #007bff; /* Define o fundo azul */
+    border: 1px solid #ccc;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login-btn:hover {
+    background-color:#007bff;
+}
+
+#loginRequest {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#loginRequest h2 {
+    margin-bottom: 20px;
+}
+
+#loginRequest label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+}
+
+#loginRequest input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#loginRequest button {
+    padding: 10px;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#loginRequest button:hover {
+    background-color: #0056b3;
+}

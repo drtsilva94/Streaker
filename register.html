@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Streaker</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>Streaker</h1>
+            <p>Melhor ferramenta de acompanhamento de metas e hábitos. Colabore com a equipe gratuitamente.</p>
+            <img src="images/amigossanrio.avif" alt="Imagem ilustrativa">
+        </div>
+        <div class="right-section">
+            <div class="right-section">
+                <div class="login-option">
+                    <button type="button" class="login-btn">Login</button>
+                </div>
+                <div id="loginRequest" style="display: none; text-align: center; margin-top: 20px;">
+                    <h2>Entrar</h2>
+                    <form id="loginForm">
+                        <label for="username">Nome de Cadastro</label>
+                        <input type="text" id="username" name="username" placeholder="Digite seu nome de cadastro">
+                        
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" placeholder="Digite sua senha">
+                        
+                        <button type="submit">Entrar</button>
+                    </form>
+                </div>
+                
+                
+                
+            <h2>Crie uma conta gratuitamente</h2>
+            <form>
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+                
+                <label for="email">Endereço de e-mail</label>
+                <input type="email" id="email" name="email" placeholder="seu e-mail">
+                
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite uma senha de 8 caracteres ou mais">
+                
+                <label for="confirma-senha">Confirmar senha</label>
+                <input type="password" id="confirma-senha" name="confirma-senha" placeholder="Confirme a senha criada">
+                
+                <button type="submit">Enviar</button>
+                <div class="google-signup">
+                    <span>ou</span>
+                    <button type="button" class="google-btn">Cadastre-se com o Google</button>
+                </div>
+
+                
+            </form>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.login-btn').addEventListener('click', function() {
+            var loginRequest = document.getElementById('loginRequest');
+            if (loginRequest.style.display === 'none') {
+                loginRequest.style.display = 'block';
+            } else {
+                loginRequest.style.display = 'none';
+            }
+        });
+    
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o comportamento padrão de recarregar a página
+            window.location.href = 'index.html'; // Redireciona para a página index.html
+        });
+    </script>
+</body>
+</html>

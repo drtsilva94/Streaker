@@ -22,10 +22,13 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Categorias</a></li>
+                    <!-- Redireciona para a página de categorias -->
+                    <li><a href="categories.html">Categorias</a></li>
                     <li><a href="#">Configurações</a></li>
                 </ul>
             </nav>
+            <!-- Botão para voltar para a página de cadastro -->
+            <button onclick="window.location.href='register.html';" style="margin-top: 20px; width: 100%;">Voltar para a Página de Cadastro</button>
         </div>
     </div>
 
@@ -54,6 +57,8 @@
         <!-- Botão para adicionar uma nova streak -->
         <!-- Chama a função JavaScript showAddStreakPrompt() ao ser clicado -->
         <button onclick="showAddStreakPrompt()">Adicionar Streak</button>
+        
+
         
         <!-- Contêiner onde todas as streaks criadas serão exibidas -->
         <div id="streaks-container">
