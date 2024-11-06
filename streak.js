@@ -4,6 +4,7 @@ let streak = streaks[streakIndex];
 
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
+let selectedDateToDelete = null; // Variável para armazenar a data selecionada para exclusão
 
 // Exibe o nome da streak e o total de check-ins
 function displayStreakDetails() {
@@ -29,12 +30,12 @@ function deleteStreak() {
     window.location.href = 'index.html';
 }
 
+// Renderiza o calendário para o mês atual
 function renderCalendar() {
     const calendarBody = document.getElementById("calendar-body");
     const monthYearDisplay = document.getElementById("month-year");
 
-    // Limpa o conteúdo do calendário antes de re-renderizar
-    calendarBody.innerHTML = '';
+    calendarBody.innerHTML = "";
 
     const firstDay = new Date(currentYear, currentMonth, 1).getDay();
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -62,15 +63,18 @@ function renderCalendar() {
                     cell.classList.add("checked");
                 }
 
-                // Adiciona evento de clique para registrar o check-in
+                // Adiciona evento de clique para registrar ou remover o check-in
                 cell.onclick = () => {
-                    if (!streak.checkDates.includes(cellDate)) {
+                    if (streak.checkDates.includes(cellDate)) {
+                        // Se o dia já tem check-in, abre o modal de confirmação
+                        selectedDateToDelete = cellDate;
+                        openModal();
+                    } else {
+                        // Se o dia não tem check-in, adiciona o check-in
                         streak.checkDates.push(cellDate);
                         localStorage.setItem('streaks', JSON.stringify(streaks));
                         renderCalendar(); // Re-renderiza o calendário para atualizar a visualização
                         displayStreakDetails();
-                    } else {
-                        alert("Check-in já registrado para este dia!");
                     }
                 };
 
@@ -84,7 +88,28 @@ function renderCalendar() {
     }
 }
 
+// Abre o modal de confirmação
+function openModal() {
+    document.getElementById("confirmModal").style.display = "block";
+}
 
+// Fecha o modal de confirmação
+function closeModal() {
+    document.getElementById("confirmModal").style.display = "none";
+    selectedDateToDelete = null; // Reseta a data selecionada para exclusão
+}
+
+// Confirma a exclusão do check-in
+function confirmDeleteCheckin() {
+    if (selectedDateToDelete) {
+        // Remove o check-in e atualiza o localStorage
+        streak.checkDates = streak.checkDates.filter(d => d !== selectedDateToDelete);
+        localStorage.setItem('streaks', JSON.stringify(streaks));
+        renderCalendar(); // Re-renderiza o calendário para atualizar a visualização
+        displayStreakDetails();
+        closeModal(); // Fecha o modal após a exclusão
+    }
+}
 
 // Muda para o mês anterior
 function prevMonth() {

@@ -52,6 +52,16 @@
         </div>
     </div>
 
+    <!-- Modal de confirmação para excluir check-in -->
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <p>Tens certeza de que deseja excluir esse check-in?</p>
+        <button onclick="confirmDeleteCheckin()">Sim</button>
+        <button onclick="closeModal()">Não</button>
+    </div>
+</div>
+
+
     <script src="streak.js"></script>
     <script>
         // Função para voltar à página inicial
