@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Streaker</title>
+    <!-- Configurações básicas do documento -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade em dispositivos móveis -->
+    <title>Streaker</title> <!-- Título da página -->
+
+    <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Contêiner principal da aplicação -->
     <div id="app">
-        <h1>Streaker</h1>
-        
+        <h1>Streaker</h1> <!-- Título principal da página -->
+
         <!-- Botão para adicionar uma nova streak -->
+        <!-- Chama a função JavaScript showAddStreakPrompt() ao ser clicado -->
         <button onclick="showAddStreakPrompt()">Adicionar Streak</button>
         
-        <!-- Contêiner para exibir todas as streaks criadas -->
+        <!-- Contêiner onde todas as streaks criadas serão exibidas -->
         <div id="streaks-container">
-            <!-- As streaks serão inseridas aqui dinamicamente pelo JavaScript -->
+            <!-- As streaks são geradas dinamicamente com JavaScript e serão inseridas aqui -->
         </div>
     </div>
 
+    <!-- Importação do arquivo JavaScript para manipulação de dados e eventos na página -->
     <script src="script.js"></script>
 </body>
 </html>

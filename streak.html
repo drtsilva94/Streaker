@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes da Streak</title>
+    <!-- Configuração da codificação de caracteres e responsividade para dispositivos móveis -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuração para a visualização adequada em dispositivos móveis -->
+    <title>Detalhes da Streak</title> <!-- Título da página -->
+
+    <!-- Link para o arquivo de estilo CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="streak-details">
+    <div id="streak-details"> <!-- Contêiner principal para os detalhes da streak -->
+        
         <!-- Botão para voltar para a página inicial -->
+        <!-- Executa a função goBack() quando clicado -->
         <button onclick="goBack()" class="back-button">Voltar para a Página Inicial</button>
 
+        <!-- Título da streak, que será preenchido com o nome da streak selecionada -->
         <h1 id="streak-name">Nome da Streak</h1>
 
-        <!-- Botões para editar e excluir a streak -->
+        <!-- Contêiner para os botões de edição e exclusão da streak -->
         <div class="streak-buttons">
-            <button onclick="editStreak()">Editar Streak</button>
-            <button onclick="deleteStreak()">Excluir Streak</button>
+            <button onclick="editStreak()">Editar Streak</button> <!-- Botão para editar o nome da streak -->
+            <button onclick="deleteStreak()">Excluir Streak</button> <!-- Botão para excluir a streak -->
         </div>
 
-        <!-- Calendário da Streak -->
+        <!-- Calendário para visualização dos check-ins da streak -->
         <div id="calendar-container">
-            <h2>Calendário de Check-ins</h2>
+            <h2>Calendário de Check-ins</h2> <!-- Título do calendário -->
+            
+            <!-- Cabeçalho do calendário com botões para navegar entre os meses -->
             <div id="calendar-header">
-                <button onclick="prevMonth()">Mês Anterior</button>
-                <span id="month-year"></span>
-                <button onclick="nextMonth()">Próximo Mês</button>
+                <button onclick="prevMonth()">Mês Anterior</button> <!-- Botão para voltar ao mês anterior -->
+                <span id="month-year"></span> <!-- Exibe o mês e o ano atuais -->
+                <button onclick="nextMonth()">Próximo Mês</button> <!-- Botão para avançar para o próximo mês -->
             </div>
+
+            <!-- Modal de confirmação para excluir check-in -->
+            <div id="confirmModal" class="modal">
+                <div class="modal-content">
+                    <p>Tens certeza de que deseja excluir esse check-in?</p>
+                    <button onclick="confirmDeleteCheckin()">Sim</button>
+                    <button onclick="closeModal()">Não</button>
+            </div>
+        </div>
+
+            
+
+            
+            <!-- Estrutura da tabela do calendário -->
             <table id="calendar">
                 <thead>
                     <tr>
+                        <!-- Cabeçalho com os dias da semana -->
                         <th>Seg</th>
                         <th>Ter</th>
                         <th>Qua</th>
@@ -40,33 +63,30 @@
                     </tr>
                 </thead>
                 <tbody id="calendar-body">
-                    <!-- Dias serão gerados pelo JavaScript -->
+                    <!-- Dias do mês serão inseridos aqui dinamicamente via JavaScript -->
                 </tbody>
             </table>
         </div>
 
-        <!-- Contador de Check-ins -->
+        <!-- Contador de check-ins com opções para exibir o total de check-ins -->
         <div id="checkin-count">
-            <h2>Total de Check-ins:</h2>
-            <p id="checkin-total">0 dias</p>
+            <h2>Total de Check-ins:</h2> <!-- Título da seção de contagem de check-ins -->
+            <p id="checkin-total">0 dias</p> <!-- Exibe o total de check-ins, atualizado dinamicamente -->
+            
+            <!-- Botões para filtrar os check-ins -->
+            <div id="checkin-filters">
+                <button onclick="showTotalCheckins('all')">Todos os dias</button> <!-- Exibe o total de todos os check-ins -->
+                <button onclick="showTotalCheckins('monthly')">Dias deste mês</button> <!-- Exibe apenas os check-ins do mês atual -->
+            </div>
         </div>
     </div>
 
-    <!-- Modal de confirmação para excluir check-in -->
-<div id="confirmModal" class="modal">
-    <div class="modal-content">
-        <p>Tens certeza de que deseja excluir esse check-in?</p>
-        <button onclick="confirmDeleteCheckin()">Sim</button>
-        <button onclick="closeModal()">Não</button>
-    </div>
-</div>
-
-
+    <!-- Importa o arquivo JavaScript para controlar as interações e lógicas na página -->
     <script src="streak.js"></script>
     <script>
         // Função para voltar à página inicial
         function goBack() {
-            window.location.href = 'index.html';
+            window.location.href = 'index.html'; // Redireciona o usuário para a página principal
         }
     </script>
 </body>

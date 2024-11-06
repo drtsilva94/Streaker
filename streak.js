@@ -9,8 +9,29 @@ let selectedDateToDelete = null; // Variável para armazenar a data selecionada 
 // Exibe o nome da streak e o total de check-ins
 function displayStreakDetails() {
     document.getElementById('streak-name').innerText = streak.name;
-    document.getElementById('checkin-total').innerText = `${streak.checkDates.length} dias`;
+    showTotalCheckins('all'); // Exibe o total geral de check-ins por padrão
     renderCalendar();
+}
+
+// Função para exibir o total de check-ins com base na opção selecionada
+function showTotalCheckins(option) {
+    let totalCheckins = 0;
+
+    if (option === 'all') {
+        // Conta todos os check-ins
+        totalCheckins = streak.checkDates.length;
+    } else if (option === 'monthly') {
+        // Conta apenas os check-ins do mês atual
+        totalCheckins = streak.checkDates.filter(date => {
+            const checkinDate = new Date(date);
+            return (
+                checkinDate.getMonth() === currentMonth &&
+                checkinDate.getFullYear() === currentYear
+            );
+        }).length;
+    }
+
+    document.getElementById('checkin-total').innerText = `${totalCheckins} dias`;
 }
 
 // Edita o nome da streak
@@ -119,6 +140,7 @@ function prevMonth() {
         currentYear--;
     }
     renderCalendar();
+    showTotalCheckins('monthly'); // Atualiza a contagem para o mês atual ao mudar de mês
 }
 
 // Muda para o próximo mês
@@ -129,6 +151,7 @@ function nextMonth() {
         currentYear++;
     }
     renderCalendar();
+    showTotalCheckins('monthly'); // Atualiza a contagem para o mês atual ao mudar de mês
 }
 
 displayStreakDetails();
