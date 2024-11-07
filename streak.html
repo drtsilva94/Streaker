@@ -3,10 +3,10 @@
 <head>
     <!-- Configuração da codificação de caracteres e responsividade para dispositivos móveis -->
     <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuração para a visualização adequada em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuração para visualização em dispositivos móveis -->
     <title>Detalhes da Streak</title> <!-- Título da página -->
 
-    <!-- Link para o arquivo de estilo CSS externo -->
+    <!-- Links para os arquivos de estilo CSS externos -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/streak.css">
 </head>
@@ -14,30 +14,88 @@
 
     <!-- Barra superior rosa -->
     <div class="header-rectangle"></div>
+
+    <!-- Barra lateral com a foto do usuário e opções de navegação -->
     <div class="sidebar active">
         <div class="sidebar-content">
 
-            <!-- Foto do usuário, carregada de acordo com a seleção no index.html -->
+            <!-- Foto do usuário, que pode ser clicada para selecionar uma nova imagem -->
             <div class="user-photo">
                 <img id="profile-picture" src="images/default-photo.jpg" alt="Foto do Usuário" onclick="toggleImageSelection()">
             </div>
+
+            <!-- Navegação da barra lateral -->
             <nav>
                 <ul>
                     <li><a href="#">Categorias</a></li>
                     <li><a href="#">Configurações</a></li>
                 </ul>
             </nav>
+
+            <!-- Botão Voltar no canto inferior da barra lateral -->
+            <button onclick="goBack()" class="back-button sidebar-back-button" aria-label="Voltar para a Página Inicial">Voltar</button>
         </div>
     </div>
-    
-    <div id="streak-content">
-    <div id="streak-details"> <!-- Contêiner principal para os detalhes da streak -->
-        
-        <!-- Botão para voltar para a página inicial -->
-        <!-- Executa a função goBack() quando clicado -->
-        <button onclick="goBack()" class="back-button" aria-label="Voltar para a Página Inicial">Voltar</button>
 
-        <!-- Contêiner de seleção de imagem -->
+    <!-- Conteúdo principal da página -->
+    <div id="streak-content">
+        <div id="streak-details"> <!-- Contêiner principal para os detalhes da streak -->
+            
+            <!-- Título da streak, preenchido com o nome da streak selecionada -->
+            <h1 id="streak-name">Nome da Streak</h1>
+
+            <!-- Contêiner para os botões de edição e exclusão da streak -->
+            <div class="streak-buttons">
+                <button onclick="editStreak()">Editar Streak</button> <!-- Botão para editar o nome da streak -->
+                <button onclick="deleteStreak()">Excluir Streak</button> <!-- Botão para excluir a streak -->
+            </div>
+
+            <!-- Calendário para visualização dos check-ins da streak -->
+            <div id="calendar-container">
+                <h2>Calendário de Check-ins</h2> <!-- Título do calendário -->
+                
+                <!-- Cabeçalho do calendário com botões para navegar entre os meses -->
+                <div id="calendar-header">
+                    <button onclick="prevMonth()">Mês Anterior</button> <!-- Botão para voltar ao mês anterior -->
+                    <span id="month-year"></span> <!-- Exibe o mês e o ano atuais -->
+                    <button onclick="nextMonth()">Próximo Mês</button> <!-- Botão para avançar para o próximo mês -->
+                </div>
+
+                <!-- Estrutura da tabela do calendário -->
+                <table id="calendar">
+                    <thead>
+                        <tr>
+                            <!-- Cabeçalho com os dias da semana -->
+                            <th>Seg</th>
+                            <th>Ter</th>
+                            <th>Qua</th>
+                            <th>Qui</th>
+                            <th>Sex</th>
+                            <th>Sáb</th>
+                            <th>Dom</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar-body">
+                        <!-- Dias do mês serão inseridos aqui dinamicamente via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Contador de check-ins com opções para exibir o total de check-ins -->
+            <div id="checkin-count">
+                <h2>Total de Check-ins:</h2> <!-- Título da seção de contagem de check-ins -->
+                <p id="checkin-total">0 dias</p> <!-- Exibe o total de check-ins, atualizado dinamicamente -->
+                
+                <!-- Botões para filtrar os check-ins -->
+                <div id="checkin-filters">
+                    <button onclick="showTotalCheckins('all')">Todos os dias</button> <!-- Exibe o total de todos os check-ins -->
+                    <button onclick="showTotalCheckins('monthly')">Dias deste mês</button> <!-- Exibe apenas os check-ins do mês atual -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contêiner de seleção de imagem -->
     <div id="image-selection" class="image-selection hidden">
         <h2>Escolha sua foto de perfil</h2>
         <div class="image-options">
@@ -46,81 +104,9 @@
             <img src="images/Badtz Maru.png" alt="Badtz" onclick="selectProfilePicture('images/Badtz Maru.png')">
             <img src="images/Cinnamoroll.jpg" alt="Cinnamoroll" onclick="selectProfilePicture('images/Cinnamoroll.jpg')">
             <img src="images/Kuromi.jpg" alt="Kuromi" onclick="selectProfilePicture('images/Kuromi.jpg')">
-            <img src="images/Keroppi.png" alt="Keroppi" onclick="selectProfilePicture('images/Keroppi.png')">
-            <img src="images/Aggretsuko.png" alt="Aggretsuko" onclick="selectProfilePicture('images/Aggretsuko.png')">
-            <img src="images/Hello Kitty.png" alt="Hello Kitty" onclick="selectProfilePicture('images/Hello Kitty.png')">
-            <img src="images/My Melody.jpg" alt="My Melody" onclick="selectProfilePicture('images/My Melody.jpg')">
-            <img src="images/Pochacco.png" alt="Pochacco" onclick="selectProfilePicture('images/Pochacco.png')">
-            <img src="images/Pompompurin.jpg" alt="Pompompurin" onclick="selectProfilePicture('images/Pompompurin.jpg')">
+            <!-- Mais opções de imagens de perfil... -->
         </div>
         <button onclick="toggleImageSelection()">Fechar</button>
-    </div>
-
-
-
-
-
-        <!-- Título da streak, que será preenchido com o nome da streak selecionada -->
-        <h1 id="streak-name">Nome da Streak</h1>
-
-        <!-- Contêiner para os botões de edição e exclusão da streak -->
-        <div class="streak-buttons">
-            <button onclick="editStreak()">Editar Streak</button> <!-- Botão para editar o nome da streak -->
-            <button onclick="deleteStreak()">Excluir Streak</button> <!-- Botão para excluir a streak -->
-        </div>
-
-        <!-- Calendário para visualização dos check-ins da streak -->
-        <div id="calendar-container">
-            <h2>Calendário de Check-ins</h2> <!-- Título do calendário -->
-            
-            <!-- Cabeçalho do calendário com botões para navegar entre os meses -->
-            <div id="calendar-header">
-                <button onclick="prevMonth()">Mês Anterior</button> <!-- Botão para voltar ao mês anterior -->
-                <span id="month-year"></span> <!-- Exibe o mês e o ano atuais -->
-                <button onclick="nextMonth()">Próximo Mês</button> <!-- Botão para avançar para o próximo mês -->
-            </div>
-
-            <!-- Modal de confirmação para excluir check-in -->
-            <div id="confirmModal" class="modal">
-                <div class="modal-content">
-                    <p>Tens certeza de que deseja excluir esse check-in?</p>
-                    <button onclick="confirmDeleteCheckin()">Sim</button>
-                    <button onclick="closeModal()">Não</button>
-            </div>
-        </div>
-
-            
-            <!-- Estrutura da tabela do calendário -->
-            <table id="calendar">
-                <thead>
-                    <tr>
-                        <!-- Cabeçalho com os dias da semana -->
-                        <th>Seg</th>
-                        <th>Ter</th>
-                        <th>Qua</th>
-                        <th>Qui</th>
-                        <th>Sex</th>
-                        <th>Sáb</th>
-                        <th>Dom</th>
-                    </tr>
-                </thead>
-                <tbody id="calendar-body">
-                    <!-- Dias do mês serão inseridos aqui dinamicamente via JavaScript -->
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Contador de check-ins com opções para exibir o total de check-ins -->
-        <div id="checkin-count">
-            <h2>Total de Check-ins:</h2> <!-- Título da seção de contagem de check-ins -->
-            <p id="checkin-total">0 dias</p> <!-- Exibe o total de check-ins, atualizado dinamicamente -->
-            
-            <!-- Botões para filtrar os check-ins -->
-            <div id="checkin-filters">
-                <button onclick="showTotalCheckins('all')">Todos os dias</button> <!-- Exibe o total de todos os check-ins -->
-                <button onclick="showTotalCheckins('monthly')">Dias deste mês</button> <!-- Exibe apenas os check-ins do mês atual -->
-            </div>
-        </div>
     </div>
 
     <!-- Importa o arquivo JavaScript para controlar as interações e lógicas na página -->
@@ -130,8 +116,9 @@
         function goBack() {
             window.location.href = 'index.html'; // Redireciona o usuário para a página principal
         }
-// Função para mostrar/ocultar a seleção de imagem
-function toggleImageSelection() {
+
+        // Função para mostrar/ocultar a seleção de imagem
+        function toggleImageSelection() {
             document.getElementById("image-selection").classList.toggle("hidden");
         }
 
@@ -156,19 +143,7 @@ function toggleImageSelection() {
             if (savedPhoto) {
                 updateProfilePicture(savedPhoto); // Se houver uma imagem salva, exibe-a
             }
-
-            // Exemplo de carregamento de calendário de check-ins
-            // Esta função deve ser substituída pela lógica de geração dinâmica do calendário real
-            loadCheckinCalendar();
         });
-
-        // Função de exemplo para carregar o calendário de check-ins
-        function loadCheckinCalendar() {
-            const calendarDiv = document.querySelector('.calendar');
-            if (calendarDiv) {
-                calendarDiv.innerHTML = "<p>Calendário dinâmico carregado aqui.</p>";
-            }
-        }
     </script>
 </body>
 </html>
