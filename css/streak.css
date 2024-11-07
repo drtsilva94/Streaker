@@ -1,0 +1,66 @@
+/* Retângulo rosa na parte superior da página */
+.header-rectangle {
+    width: 100%;
+    height: 50px;
+    background-color: #FFB6C1; /* Rosa claro */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Estilo base da página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding-top: 70px; /* Espaço para o retângulo rosa */
+}
+
+/* Ajuste para o conteúdo no streak.html */
+#streak-content {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 20px; /* Espaço extra para não sobrepor a barra superior */
+}
+
+/* Estilo dos detalhes e botões no streak.html */
+.streak-detail, .streak-buttons {
+    margin-top: 20px; /* Espaço extra para evitar sobreposição com a barra superior */
+    padding-top: 10px; /* Ajuste adicional se necessário */
+}
+
+/* Estilo da barra lateral permanente */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 50px; /* Abaixo da barra superior rosa */
+    width: 250px;
+    height: calc(100% - 50px); /* Ajusta para a altura total abaixo da barra superior */
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+    z-index: 999;
+}
+
+.sidebar-content {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.user-photo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Ajuste para o conteúdo principal quando a barra lateral está ativa */
+#streak-content {
+    margin-left: 250px; /* Espaço para a barra lateral */
+    padding: 20px;
+    padding-top: 70px; /* Espaço extra para a barra superior rosa */
+}

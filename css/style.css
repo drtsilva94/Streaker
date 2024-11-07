@@ -1,3 +1,14 @@
+/* Retângulo rosa na parte superior da página */
+.header-rectangle {
+    width: 100%;
+    height: 50px;
+    background-color: #FFB6C1; /* Rosa claro */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
 /* Estilo base da página */
 body {
     display: flex;
@@ -6,9 +17,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
     margin: 0;
-    padding: 20px;
+    padding-top: 70px; /* Espaço para o retângulo rosa */
 }
 
+/* Ajustes para o conteúdo da aplicação */
 #app, #streak-details {
     text-align: center;
     width: 90%;
@@ -60,13 +72,13 @@ button {
 .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 4px; /* Reduz o espaçamento entre as células */
-    padding: 8px; /* Ajuste no padding */
+    gap: 4px;
+    padding: 8px;
 }
 
 /* Estilo de cada dia no calendário */
 .calendar-day {
-    width: 25px; /* Reduz o tamanho de 30px para 25px */
+    width: 25px;
     height: 25px;
     display: flex;
     align-items: center;
@@ -75,7 +87,7 @@ button {
     background-color: #eee;
     font-weight: bold;
     color: #333;
-    font-size: 0.9em; /* Ajusta o tamanho da fonte para caber melhor */
+    font-size: 0.9em;
 }
 
 /* Estilo para os dias com check-in */
@@ -114,14 +126,14 @@ button {
 
 /* Estilos para o modal */
 .modal {
-    display: none; /* Esconde o modal por padrão */
+    display: none;
     position: fixed;
     z-index: 100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
@@ -175,7 +187,7 @@ button {
 /* Botão para mostrar/ocultar a barra lateral */
 #toggle-sidebar {
     position: absolute;
-    top: 20px;
+    top: 70px;
     left: 20px;
     padding: 10px;
     font-size: 20px;
@@ -184,31 +196,32 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 1000; /* Fica sobre outros elementos */
+    z-index: 1001;
 }
 
 /* Estilo da barra lateral */
 .sidebar {
     position: fixed;
-    left: -250px; /* Oculta a barra lateral inicialmente */
-    top: 0;
+    left: -250px;
+    top: 50px;
     width: 250px;
-    height: 100%;
+    height: calc(100% - 50px);
     background-color: #333;
     color: white;
     transition: 0.3s;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 70px; /* Espaço adicional para que o conteúdo comece mais abaixo */
     z-index: 999;
 }
 
 .sidebar.active {
-    left: 0; /* Exibe a barra lateral quando ativo */
+    left: 0;
 }
 
 /* Conteúdo da barra lateral */
 .sidebar-content {
     text-align: center;
+    margin-top: 30px; /* Adiciona mais espaço entre o topo da barra lateral e o conteúdo */
 }
 
 .user-photo img {
@@ -216,11 +229,13 @@ button {
     height: 80px;
     border-radius: 50%;
     margin-bottom: 15px;
+    margin-top: 20px; /* Espaço extra para posicionar a foto mais abaixo */
 }
 
 .sidebar nav ul {
     list-style-type: none;
     padding: 0;
+    margin-top: 20px; /* Adiciona espaço antes da lista de navegação */
 }
 
 .sidebar nav ul li {
@@ -244,7 +259,7 @@ button {
 }
 
 .sidebar.active ~ #app {
-    margin-left: 250px; /* Move o conteúdo para a direita quando a barra lateral está ativa */
+    margin-left: 250px;
 }
 
 /* Estilo para o contêiner de seleção de imagem */

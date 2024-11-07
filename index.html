@@ -10,11 +10,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <!-- Barra superior rosa -->
+    <div class="header-rectangle"></div>
+
     <!-- Botão para mostrar/ocultar a barra lateral -->
     <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
 
     <!-- Barra lateral -->
-    <div id="sidebar" class="sidebar">
+    <div id="sidebar" class="sidebar active">
         <div class="sidebar-content">
             <!-- Foto do usuário; ao clicar, exibe opções de imagens -->
             <div class="user-photo">
@@ -28,14 +32,15 @@
                 </ul>
             </nav>
             <!-- Botão para voltar para a página de cadastro -->
-            <button onclick="window.location.href='register.html';" style="margin-top: 20px; width: 100%;">Voltar para a Página de Cadastro</button>
+            <button onclick="window.location.href='register.html';" style="margin-top: 20px; width: 100%;">Voltar</button>
         </div>
     </div>
 
-     <!-- Contêiner de seleção de imagem -->
-     <div id="image-selection" class="image-selection hidden">
+    <!-- Contêiner de seleção de imagem -->
+    <div id="image-selection" class="image-selection hidden">
         <h2>Escolha sua foto de perfil</h2>
         <div class="image-options">
+            <!-- Opções de imagens; cada imagem chama a função selectProfilePicture ao ser clicada -->
             <img src="images/Chococat.webp" alt="Chococat" onclick="selectProfilePicture('images/Chococat.webp')">
             <img src="images/Badtz Maru.png" alt="Badtz" onclick="selectProfilePicture('images/Badtz Maru.png')">
             <img src="images/Cinnamoroll.jpg" alt="Cinnamoroll" onclick="selectProfilePicture('images/Cinnamoroll.jpg')">
@@ -44,7 +49,7 @@
             <img src="images/Aggretsuko.png" alt="Aggretsuko" onclick="selectProfilePicture('images/Aggretsuko.png')">
             <img src="images/Hello Kitty.png" alt="Hello Kitty" onclick="selectProfilePicture('images/Hello Kitty.png')">
             <img src="images/My Melody.jpg" alt="My Melody" onclick="selectProfilePicture('images/My Melody.jpg')">
-            <img src="images/Pochacco.png" alt="Pochacco" onclick="selectProfilePicture('images/Pochacco.pngp')">
+            <img src="images/Pochacco.png" alt="Pochacco" onclick="selectProfilePicture('images/Pochacco.png')">
             <img src="images/Pompompurin.jpg" alt="Pompompurin" onclick="selectProfilePicture('images/Pompompurin.jpg')">
         </div>
         <button onclick="toggleImageSelection()">Fechar</button>
@@ -55,11 +60,8 @@
         <h1>Streaker</h1> <!-- Título principal da página -->
 
         <!-- Botão para adicionar uma nova streak -->
-        <!-- Chama a função JavaScript showAddStreakPrompt() ao ser clicado -->
         <button onclick="showAddStreakPrompt()">Adicionar Streak</button>
-        
 
-        
         <!-- Contêiner onde todas as streaks criadas serão exibidas -->
         <div id="streaks-container">
             <!-- As streaks são geradas dinamicamente com JavaScript e serão inseridas aqui -->
@@ -73,6 +75,34 @@
         function toggleSidebar() {
             document.getElementById("sidebar").classList.toggle("active");
         }
+
+        // Função para mostrar/ocultar a seleção de imagem
+        function toggleImageSelection() {
+            document.getElementById("image-selection").classList.toggle("hidden");
+        }
+
+        // Função para selecionar e salvar a imagem de perfil no localStorage
+        function selectProfilePicture(imagePath) {
+            localStorage.setItem('userPhoto', imagePath); // Salva o caminho da imagem no localStorage
+            updateProfilePicture(imagePath); // Atualiza a imagem do usuário na página
+            toggleImageSelection(); // Fecha o seletor de imagens
+        }
+
+        // Função para atualizar a imagem de perfil na página
+        function updateProfilePicture(imagePath) {
+            const profilePicture = document.getElementById("profile-picture");
+            if (profilePicture) {
+                profilePicture.src = imagePath; // Define o caminho da imagem selecionada
+            }
+        }
+
+        // Carregar a imagem de perfil salva no localStorage ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedPhoto = localStorage.getItem('userPhoto'); // Obtém o caminho da imagem salva
+            if (savedPhoto) {
+                updateProfilePicture(savedPhoto); // Se houver uma imagem salva, exibe-a
+            }
+        });
     </script>
 </body>
 </html>

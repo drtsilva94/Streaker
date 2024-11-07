@@ -8,13 +8,57 @@
 
     <!-- Link para o arquivo de estilo CSS externo -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/streak.css">
 </head>
 <body>
+
+    <!-- Barra superior rosa -->
+    <div class="header-rectangle"></div>
+    <div class="sidebar active">
+        <div class="sidebar-content">
+
+            <!-- Foto do usuário, carregada de acordo com a seleção no index.html -->
+            <div class="user-photo">
+                <img id="profile-picture" src="images/default-photo.jpg" alt="Foto do Usuário" onclick="toggleImageSelection()">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Configurações</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    <div id="streak-content">
     <div id="streak-details"> <!-- Contêiner principal para os detalhes da streak -->
         
         <!-- Botão para voltar para a página inicial -->
         <!-- Executa a função goBack() quando clicado -->
         <button onclick="goBack()" class="back-button" aria-label="Voltar para a Página Inicial">Voltar</button>
+
+        <!-- Contêiner de seleção de imagem -->
+    <div id="image-selection" class="image-selection hidden">
+        <h2>Escolha sua foto de perfil</h2>
+        <div class="image-options">
+            <!-- Opções de imagens para perfil -->
+            <img src="images/Chococat.webp" alt="Chococat" onclick="selectProfilePicture('images/Chococat.webp')">
+            <img src="images/Badtz Maru.png" alt="Badtz" onclick="selectProfilePicture('images/Badtz Maru.png')">
+            <img src="images/Cinnamoroll.jpg" alt="Cinnamoroll" onclick="selectProfilePicture('images/Cinnamoroll.jpg')">
+            <img src="images/Kuromi.jpg" alt="Kuromi" onclick="selectProfilePicture('images/Kuromi.jpg')">
+            <img src="images/Keroppi.png" alt="Keroppi" onclick="selectProfilePicture('images/Keroppi.png')">
+            <img src="images/Aggretsuko.png" alt="Aggretsuko" onclick="selectProfilePicture('images/Aggretsuko.png')">
+            <img src="images/Hello Kitty.png" alt="Hello Kitty" onclick="selectProfilePicture('images/Hello Kitty.png')">
+            <img src="images/My Melody.jpg" alt="My Melody" onclick="selectProfilePicture('images/My Melody.jpg')">
+            <img src="images/Pochacco.png" alt="Pochacco" onclick="selectProfilePicture('images/Pochacco.png')">
+            <img src="images/Pompompurin.jpg" alt="Pompompurin" onclick="selectProfilePicture('images/Pompompurin.jpg')">
+        </div>
+        <button onclick="toggleImageSelection()">Fechar</button>
+    </div>
+
+
+
+
 
         <!-- Título da streak, que será preenchido com o nome da streak selecionada -->
         <h1 id="streak-name">Nome da Streak</h1>
@@ -85,6 +129,45 @@
         // Função para voltar à página inicial
         function goBack() {
             window.location.href = 'index.html'; // Redireciona o usuário para a página principal
+        }
+// Função para mostrar/ocultar a seleção de imagem
+function toggleImageSelection() {
+            document.getElementById("image-selection").classList.toggle("hidden");
+        }
+
+        // Função para selecionar e salvar a imagem de perfil no localStorage
+        function selectProfilePicture(imagePath) {
+            localStorage.setItem('userPhoto', imagePath); // Salva o caminho da imagem no localStorage
+            updateProfilePicture(imagePath); // Atualiza a imagem do usuário na página
+            toggleImageSelection(); // Fecha o seletor de imagens
+        }
+
+        // Função para atualizar a imagem de perfil na página
+        function updateProfilePicture(imagePath) {
+            const profilePicture = document.getElementById("profile-picture");
+            if (profilePicture) {
+                profilePicture.src = imagePath; // Define o caminho da imagem selecionada
+            }
+        }
+
+        // Carregar a imagem de perfil salva no localStorage ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedPhoto = localStorage.getItem('userPhoto'); // Obtém o caminho da imagem salva
+            if (savedPhoto) {
+                updateProfilePicture(savedPhoto); // Se houver uma imagem salva, exibe-a
+            }
+
+            // Exemplo de carregamento de calendário de check-ins
+            // Esta função deve ser substituída pela lógica de geração dinâmica do calendário real
+            loadCheckinCalendar();
+        });
+
+        // Função de exemplo para carregar o calendário de check-ins
+        function loadCheckinCalendar() {
+            const calendarDiv = document.querySelector('.calendar');
+            if (calendarDiv) {
+                calendarDiv.innerHTML = "<p>Calendário dinâmico carregado aqui.</p>";
+            }
         }
     </script>
 </body>
