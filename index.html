@@ -5,6 +5,7 @@
     <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade em dispositivos móveis -->
     <title>Streaker</title> <!-- Título da página -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="css/style.css">
@@ -13,30 +14,24 @@
 <body>
     <!-- Barra superior -->
     <div class="header-rectangle">
-        <!-- Botão de voltar -->
-        <button onclick="window.location.href='register.html';" class="back-button"> &lt; </button>
-    </div>
-
-    <!-- Botão para mostrar/ocultar a barra lateral -->
-    <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
-
-    <!-- Barra lateral -->
-    <div id="sidebar" class="sidebar active">
-        <div class="sidebar-content">
-            <!-- Foto do usuário; ao clicar, exibe opções de imagens -->
-            <div class="user-photo">
-                <img id="profile-picture" src="images/Chococat.webp" alt="Foto do Usuário" onclick="toggleImageSelection()">
-            </div>
-            <nav>
-                <ul>
-                    <!-- Redireciona para a página de categorias -->
-                    <li><a href="categories.html">Categorias</a></li>
-                    <li><a href="#">Configurações</a></li>
-                </ul>
-            </nav>
+        <!-- Botão de voltar para a página inicial com ícone de casa -->
+        <button onclick="window.location.href='register.html';" class="home-button">
+            <i class="fa-solid fa-house"></i>
+        </button>
+        <!-- Foto do usuário; ao clicar, exibe opções de imagens -->
+        <div class="user-photo">
+            <img id="profile-picture" src="images/Chococat.webp" alt="Foto do Usuário" onclick="toggleImageSelection()">
         </div>
+        <nav>
+            <ul>
+                <!-- Redireciona para a página de categorias -->
+                <li><a href="categories.html">Categorias</a></li>
+                <li><a href="#">Configurações</a></li>
+            </ul>
+        </nav>
     </div>
 
+ 
     <!-- Contêiner de seleção de imagem -->
     <div id="image-selection" class="image-selection hidden">
         <h2>Escolha sua foto de perfil</h2>
