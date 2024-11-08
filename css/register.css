@@ -10,12 +10,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f2f2f2;
+    background-color: #FAF3E0;
 }
 
 .container {
     display: flex;
-    background-color: #ffffff;
+    background-color: #FFF8E7;
     border-radius: 8px;
     overflow: hidden;
     max-width: 1000px;
@@ -24,7 +24,7 @@ body {
 
 .left-section {
     flex: 1;
-    background-color: #D8BFD8;
+    background-color: #B4CD8C;
     color: white;
     padding: 40px;
     text-align: center;
@@ -62,12 +62,19 @@ input {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #FFF8E7;
+}
+
+input:focus {
+    outline: none;
+    border-color: #A1E3A1; /* Verde suave para o foco */
+    box-shadow: 0 0 5px rgba(161, 227, 161, 0.5);
 }
 
 button {
     padding: 10px;
     border: none;
-    background-color: #FF69B4;
+    background-color: #A1E3A1;
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -101,7 +108,7 @@ button {
 }
 
 .login-btn {
-    background-color: #FF69B4; /* Define o fundo azul */
+    background-color: #A1E3A1; /* Define o fundo azul */
     border: 1px solid #ccc;
     color: white;
     border-radius: 5px;
@@ -111,7 +118,7 @@ button {
 }
 
 .login-btn:hover {
-    background-color:#FF69B4;
+    background-color:#A1E3A1;
 }
 
 #loginRequest {
@@ -134,18 +141,21 @@ button {
 }
 
 #loginRequest input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    background-color: #FFF8E7 !important; 
     border: 1px solid #ccc;
+    padding: 10px;
     border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+#loginRequest {
+    background-color: #FFF8E7; /* Mesma cor para o fundo do formulário */
 }
 
 #loginRequest button {
     padding: 10px;
     width: 100%;
-    background-color: #FF69B4;
+    background-color: #A1E3A1;
     color: white;
     border: none;
     border-radius: 5px;
@@ -153,5 +163,5 @@ button {
 }
 
 #loginRequest button:hover {
-    background-color: #FF69B4;
+    background-color: #A1E3A1;
 }
