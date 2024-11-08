@@ -5,6 +5,7 @@
     <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuração para visualização em dispositivos móveis -->
     <title>Detalhes da Streak</title> <!-- Título da página -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Links para os arquivos de estilo CSS externos -->
     <link rel="stylesheet" href="css/style.css">
@@ -12,36 +13,48 @@
 </head>
 <body>
 
-        <!-- Barra superior rosa com o botão de voltar -->
-        <div class="header-rectangle">
-            <!-- Botão de voltar -->
-            <button onclick="window.location.href='register.html';" class="back-button"> &lt; </button>
+        <!-- Header -->
+    <header class="header-rectangle">
+        <div class="left-buttons">
+            <!-- Botão de voltar para a página inicial com ícone de casa -->
+            <button onclick="window.location.href='index.html';" class="home-button">
+                <i class="fa-solid fa-house"></i>
+            </button>
+            
         </div>
 
-    <!-- Barra superior rosa -->
-    <div class="header-rectangle"></div>
+      
 
-    <!-- Barra lateral com a foto do usuário e opções de navegação -->
-    <div class="sidebar active">
-        <div class="sidebar-content">
-
+        <!-- Foto do usuário à direita -->
+        <div class="user-photo">
+            <img id="profile-picture" src="images/Chococat.webp" alt="Foto do Usuário" onclick="toggleImageSelection()">
+        </div>
+    </header>
             <!-- Foto do usuário, que pode ser clicada para selecionar uma nova imagem -->
             <div class="user-photo">
                 <img id="profile-picture" src="images/default-photo.jpg" alt="Foto do Usuário" onclick="toggleImageSelection()">
             </div>
 
-            <!-- Navegação da barra lateral -->
-            <nav>
-                <ul>
-                    <li><a href="#">Categorias</a></li>
-                    <li><a href="#">Configurações</a></li>
-                </ul>
-            </nav>
-
-            <!-- Botão Voltar no canto inferior da barra lateral -->
-            <button onclick="goBack()" class="back-button sidebar-back-button" aria-label="Voltar para a Página Inicial">Voltar</button>
+            
+    <!-- Contêiner de seleção de imagem -->
+    <div id="image-selection" class="image-selection hidden">
+        <h2>Escolha sua foto de perfil</h2>
+        <div class="image-options">
+            <!-- Opções de imagens; cada imagem chama a função selectProfilePicture ao ser clicada -->
+            <img src="images/Chococat.webp" alt="Chococat" onclick="selectProfilePicture('images/Chococat.webp')">
+            <img src="images/Badtz Maru.png" alt="Badtz" onclick="selectProfilePicture('images/Badtz Maru.png')">
+            <img src="images/Cinnamoroll.jpg" alt="Cinnamoroll" onclick="selectProfilePicture('images/Cinnamoroll.jpg')">
+            <img src="images/Kuromi.jpg" alt="Kuromi" onclick="selectProfilePicture('images/Kuromi.jpg')">
+            <img src="images/Keroppi.png" alt="Keroppi" onclick="selectProfilePicture('images/Keroppi.png')">
+            <img src="images/Aggretsuko.png" alt="Aggretsuko" onclick="selectProfilePicture('images/Aggretsuko.png')">
+            <img src="images/Hello Kitty.png" alt="Hello Kitty" onclick="selectProfilePicture('images/Hello Kitty.png')">
+            <img src="images/My Melody.jpg" alt="My Melody" onclick="selectProfilePicture('images/My Melody.jpg')">
+            <img src="images/Pochacco.png" alt="Pochacco" onclick="selectProfilePicture('images/Pochacco.png')">
+            <img src="images/Pompompurin.jpg" alt="Pompompurin" onclick="selectProfilePicture('images/Pompompurin.jpg')">
         </div>
+        <button onclick="toggleImageSelection()">Fechar</button>
     </div>
+         
 
     <!-- Conteúdo principal da página -->
     <div id="streak-content">
@@ -101,28 +114,16 @@
         </div>
     </div>
 
-    <!-- Modal de confirmação de exclusão de check-in -->
-    <div id="confirmModal" class="modal">
-        <div class="modal-content">
-            <p>Deseja realmente excluir o check-in deste dia?</p>
-            <button onclick="confirmDeleteCheckin()">Sim, excluir</button>
-            <button onclick="closeModal()">Cancelar</button>
-        </div>
+ <!-- Modal de confirmação de exclusão de check-in -->
+<div id="confirmModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <p>Deseja realmente excluir o check-in deste dia?</p>
+        <button onclick="confirmDeleteCheckin()">Sim, excluir</button>
+        <button onclick="closeModal()">Cancelar</button>
     </div>
+</div>
 
-    <!-- Contêiner de seleção de imagem -->
-    <div id="image-selection" class="image-selection hidden">
-        <h2>Escolha sua foto de perfil</h2>
-        <div class="image-options">
-            <!-- Opções de imagens para perfil -->
-            <img src="images/Chococat.webp" alt="Chococat" onclick="selectProfilePicture('images/Chococat.webp')">
-            <img src="images/Badtz Maru.png" alt="Badtz" onclick="selectProfilePicture('images/Badtz Maru.png')">
-            <img src="images/Cinnamoroll.jpg" alt="Cinnamoroll" onclick="selectProfilePicture('images/Cinnamoroll.jpg')">
-            <img src="images/Kuromi.jpg" alt="Kuromi" onclick="selectProfilePicture('images/Kuromi.jpg')">
-            <!-- Mais opções de imagens de perfil... -->
-        </div>
-        <button onclick="toggleImageSelection()">Fechar</button>
-    </div>
+    
 
     <!-- Importa o arquivo JavaScript para controlar as interações e lógicas na página -->
     <script src="js/streak.js"></script>

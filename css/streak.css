@@ -1,12 +1,21 @@
-/* Barra superior da página */
+/* Ajuste no estilo do header */
 .header-rectangle {
     width: 100%;
-    height: 50px;
-    background-color: #D8BFD8; /* Rosa claro */
+    height: 80px;
+    background-color: #D8BFD8;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+/* Ajuste nos elementos do cabeçalho */
+.left-buttons {
+    display: flex;
+    gap: 10px;
 }
 
 /* Estilo base da página */
