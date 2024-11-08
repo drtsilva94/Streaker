@@ -109,6 +109,13 @@ function renderCalendar() {
     }
 }
 
+function openDeleteConfirmation() {
+    document.getElementById("confirmModal").style.display = "flex"; // Mostra o modal
+}
+
+function closeModal() {
+    document.getElementById("confirmModal").style.display = "none"; // Fecha o modal
+}
 // Abre o modal de confirmação
 function openModal() {
     document.getElementById("confirmModal").style.display = "block";
