@@ -1,8 +1,8 @@
-/* Retângulo rosa na parte superior da página */
+/* Barra superior da página */
 .header-rectangle {
     width: 100%;
     height: 50px;
-    background-color: #FFB6C1; /* Rosa claro */
+    background-color: #D8BFD8; /* Rosa claro */
     position: fixed;
     top: 0;
     left: 0;
@@ -25,6 +25,9 @@ body {
     width: 90%;
     max-width: 800px;
     margin-top: 20px; /* Espaço extra para não sobrepor a barra superior */
+    margin-left: 250px; /* Espaço para a barra lateral */
+    padding: 20px;
+    padding-top: 70px; /* Espaço extra para a barra superior rosa */
 }
 
 /* Estilo dos detalhes e botões no streak.html */
@@ -40,7 +43,7 @@ body {
     top: 50px; /* Abaixo da barra superior rosa */
     width: 250px;
     height: calc(100% - 50px); /* Ajusta para a altura total abaixo da barra superior */
-    background-color: #333;
+    background-color: #333; /* Cor de fundo escura */
     color: white;
     padding-top: 20px;
     z-index: 999;
@@ -54,13 +57,60 @@ body {
 .user-photo img {
     width: 80px;
     height: 80px;
-    border-radius: 50%;
+    border-radius: 50%; /* Imagem de perfil em formato circular */
     margin-bottom: 15px;
 }
+/* Estilos para o modal de confirmação */
+.modal {
+    display: none; /* O modal começa oculto */
+    position: fixed; /* Fixa o modal na tela */
+    z-index: 1001; /* Garante que o modal apareça acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Cobre toda a largura da tela */
+    height: 100%; /* Cobre toda a altura da tela */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro com opacidade */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-/* Ajuste para o conteúdo principal quando a barra lateral está ativa */
-#streak-content {
-    margin-left: 250px; /* Espaço para a barra lateral */
+/* Estilo do conteúdo do modal */
+.modal-content {
+    background-color: #fff; /* Fundo branco para o conteúdo do modal */
     padding: 20px;
-    padding-top: 70px; /* Espaço extra para a barra superior rosa */
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilo do texto dentro do modal */
+.modal-content p {
+    margin-bottom: 20px;
+}
+
+/* Estilo dos botões dentro do modal */
+.modal-content button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Cor de fundo e efeito de hover dos botões do modal */
+.modal-content button:hover {
+    opacity: 0.8;
+}
+
+/* Estilo específico para o botão de confirmação (excluir) */
+.modal-content button:first-child {
+    background-color: #FF6347; /* Cor para o botão de confirmação (excluir) */
+    color: white;
+}
+
+/* Estilo específico para o botão de cancelar */
+.modal-content button:last-child {
+    background-color: #ccc; /* Cor para o botão de cancelar */
 }

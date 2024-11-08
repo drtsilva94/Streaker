@@ -18,13 +18,13 @@ body {
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
-    max-width: 900px;
+    max-width: 1000px;
     width: 100%;
 }
 
 .left-section {
     flex: 1;
-    background-color: #007bff;
+    background-color: #D8BFD8;
     color: white;
     padding: 40px;
     text-align: center;
@@ -32,7 +32,7 @@ body {
 
 .left-section img {
     width: 100%;
-    max-width: 250px; /* Ajuste este valor conforme necessário */
+    max-width: 300px; /* Ajuste este valor conforme necessário */
     height: auto;
     margin: 20px auto;
     display: block;
@@ -67,7 +67,7 @@ input {
 button {
     padding: 10px;
     border: none;
-    background-color: #007bff;
+    background-color: #FF69B4;
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -101,7 +101,7 @@ button {
 }
 
 .login-btn {
-    background-color: #007bff; /* Define o fundo azul */
+    background-color: #FF69B4; /* Define o fundo azul */
     border: 1px solid #ccc;
     color: white;
     border-radius: 5px;
@@ -111,7 +111,7 @@ button {
 }
 
 .login-btn:hover {
-    background-color:#007bff;
+    background-color:#FF69B4;
 }
 
 #loginRequest {
@@ -145,7 +145,7 @@ button {
 #loginRequest button {
     padding: 10px;
     width: 100%;
-    background-color: #007bff;
+    background-color: #FF69B4;
     color: white;
     border: none;
     border-radius: 5px;
@@ -153,5 +153,5 @@ button {
 }
 
 #loginRequest button:hover {
-    background-color: #0056b3;
+    background-color: #FF69B4;
 }

@@ -9,10 +9,13 @@
     <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
-    <!-- Barra superior rosa -->
-    <div class="header-rectangle"></div>
+<body>
+    <!-- Barra superior -->
+    <div class="header-rectangle">
+        <!-- Botão de voltar -->
+        <button onclick="window.location.href='register.html';" class="back-button"> &lt; </button>
+    </div>
 
     <!-- Botão para mostrar/ocultar a barra lateral -->
     <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
@@ -31,8 +34,6 @@
                     <li><a href="#">Configurações</a></li>
                 </ul>
             </nav>
-            <!-- Botão para voltar para a página de cadastro -->
-            <button onclick="window.location.href='register.html';" style="margin-top: 20px; width: 100%;">Voltar</button>
         </div>
     </div>
 

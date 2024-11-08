@@ -1,72 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Streaker</title>
-    <link rel="stylesheet" href="css/register.css">
+    <meta charset="UTF-8"> <!-- Define o conjunto de caracteres como UTF-8 para suportar caracteres especiais -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Torna a página responsiva, ajustando-a para diferentes tamanhos de tela -->
+    <title>Cadastro - Streaker</title> <!-- Título da página que aparece na aba do navegador -->
+    <link rel="stylesheet" href="css/register.css"> <!-- Link para o arquivo de estilos CSS externo -->
 </head>
 <body>
-    <div class="container">
+    <div class="container"> <!-- Container principal para os elementos de layout da página -->
+        
+        <!-- Seção esquerda com informações de introdução sobre o Streaker -->
         <div class="left-section">
-            <h1>Streaker</h1>
-            <p>Melhor ferramenta de acompanhamento de metas e hábitos. Colabore com a equipe gratuitamente.</p>
-            <img src="images/amigossanrio.avif" alt="Imagem ilustrativa">
+            <h1>Streaker</h1> <!-- Título do aplicativo -->
+            <p>Melhor ferramenta de acompanhamento de metas e hábitos. Colabore com a equipe gratuitamente.</p> <!-- Descrição curta do Streaker -->
+            <img src="images/amigossanrio.avif" alt="Imagem ilustrativa"> <!-- Imagem ilustrativa do lado esquerdo -->
         </div>
+        
+        <!-- Seção direita para o formulário de cadastro e opção de login -->
         <div class="right-section">
-            <div class="right-section">
-                <div class="login-option">
-                    <button type="button" class="login-btn">Login</button>
-                </div>
-                <div id="loginRequest" style="display: none; text-align: center; margin-top: 20px;">
-                    <h2>Entrar</h2>
-                    <form id="loginForm">
-                        <label for="username">Nome de Cadastro</label>
-                        <input type="text" id="username" name="username" placeholder="Digite seu nome de cadastro">
-                        
-                        <label for="password">Senha</label>
-                        <input type="password" id="password" name="password" placeholder="Digite sua senha">
-                        
-                        <button type="submit">Entrar</button>
-                    </form>
-                </div>
-                
-                
-                
-            <h2>Crie uma conta gratuitamente</h2>
-            <form>
+            <div class="login-option"> <!-- Botão para acessar a opção de login -->
+                <button type="button" class="login-btn">Login</button> <!-- Botão para alternar a exibição do formulário de login -->
+            </div>
+            
+            <!-- Formulário de login oculto que aparece ao clicar no botão de login -->
+            <div id="loginRequest" style="display: none; text-align: center; margin-top: 20px;">
+                <h2>Entrar</h2> <!-- Título da seção de login -->
+                <form id="loginForm"> <!-- Formulário para login -->
+                    <label for="username">Nome de Cadastro</label>
+                    <input type="text" id="username" name="username" placeholder="Digite seu nome de cadastro"> <!-- Campo de entrada para o nome de cadastro -->
+                    
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha"> <!-- Campo de entrada para senha -->
+                    
+                    <button type="submit">Entrar</button> <!-- Botão para enviar o formulário de login -->
+                </form>
+            </div>
+            
+            <h2>Crie uma conta gratuitamente</h2> <!-- Título do formulário de cadastro -->
+            <form> <!-- Formulário de cadastro -->
                 <label for="nome">Nome completo</label>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo"> <!-- Campo para nome completo -->
                 
                 <label for="email">Endereço de e-mail</label>
-                <input type="email" id="email" name="email" placeholder="seu e-mail">
+                <input type="email" id="email" name="email" placeholder="seu e-mail"> <!-- Campo para e-mail -->
                 
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" placeholder="Digite uma senha de 8 caracteres ou mais">
+                <input type="password" id="senha" name="senha" placeholder="Digite uma senha de 8 caracteres ou mais"> <!-- Campo para senha -->
                 
                 <label for="confirma-senha">Confirmar senha</label>
-                <input type="password" id="confirma-senha" name="confirma-senha" placeholder="Confirme a senha criada">
+                <input type="password" id="confirma-senha" name="confirma-senha" placeholder="Confirme a senha criada"> <!-- Campo para confirmação de senha -->
                 
-                <button type="submit">Enviar</button>
+                <button type="submit">Enviar</button> <!-- Botão para enviar o formulário de cadastro -->
+                
+                <!-- Seção para cadastro com o Google -->
                 <div class="google-signup">
                     <span>ou</span>
-                    <button type="button" class="google-btn">Cadastre-se com o Google</button>
+                    <button type="button" class="google-btn">Cadastre-se com o Google</button> <!-- Botão para cadastro via Google -->
                 </div>
-
-                
             </form>
         </div>
     </div>
+    
+    <!-- Script para funcionalidades de login -->
     <script>
+        // Alterna a exibição do formulário de login ao clicar no botão de login
         document.querySelector('.login-btn').addEventListener('click', function() {
             var loginRequest = document.getElementById('loginRequest');
             if (loginRequest.style.display === 'none') {
-                loginRequest.style.display = 'block';
+                loginRequest.style.display = 'block'; // Exibe o formulário de login
             } else {
-                loginRequest.style.display = 'none';
+                loginRequest.style.display = 'none'; // Oculta o formulário de login
             }
         });
-    
+        
+        // Impede o recarregamento da página ao enviar o formulário de login e redireciona para index.html
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Impede o comportamento padrão de recarregar a página
             window.location.href = 'index.html'; // Redireciona para a página index.html
