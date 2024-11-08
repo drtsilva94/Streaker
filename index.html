@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Configurações básicas do documento -->
-    <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade em dispositivos móveis -->
-    <title>Streaker</title> <!-- Título da página -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaker</title>
 
-    <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
-    <!-- Barra superior -->
-    <div class="header-rectangle">
-        <!-- Botão de voltar para a página inicial com ícone de casa -->
-        <button onclick="window.location.href='register.html';" class="home-button">
-            <i class="fa-solid fa-house"></i>
-        </button>
-        <!-- Foto do usuário; ao clicar, exibe opções de imagens -->
+    <!-- Header -->
+    <header class="header-rectangle">
+        <div class="left-buttons">
+            <!-- Botão de voltar para a página inicial com ícone de casa -->
+            <button onclick="window.location.href='register.html';" class="home-button">
+                <i class="fa-solid fa-house"></i>
+            </button>
+            <button onclick="window.location.href='categories.html';" class="categories-button">
+                <i class="fa-solid fa-list"></i>
+            </button>
+        </div>
+
+        <!-- Botão centralizado para adicionar uma nova streak -->
+        <button class="add-streak-button" onclick="showAddStreakPrompt()">Adicionar Streak</button>
+
+        <!-- Foto do usuário à direita -->
         <div class="user-photo">
             <img id="profile-picture" src="images/Chococat.webp" alt="Foto do Usuário" onclick="toggleImageSelection()">
         </div>
-        <nav>
-            <ul>
-                <!-- Redireciona para a página de categorias -->
-                <li><a href="categories.html">Categorias</a></li>
-                <li><a href="#">Configurações</a></li>
-            </ul>
-        </nav>
-    </div>
+    </header>
 
- 
     <!-- Contêiner de seleção de imagem -->
     <div id="image-selection" class="image-selection hidden">
         <h2>Escolha sua foto de perfil</h2>
@@ -53,51 +51,27 @@
 
     <!-- Contêiner principal da aplicação -->
     <div id="app">
-        <h1>Streaker</h1> <!-- Título principal da página -->
-
-        <!-- Botão para adicionar uma nova streak -->
-        <button onclick="showAddStreakPrompt()">Adicionar Streak</button>
-
         <!-- Contêiner onde todas as streaks criadas serão exibidas -->
         <div id="streaks-container">
             <!-- As streaks são geradas dinamicamente com JavaScript e serão inseridas aqui -->
         </div>
     </div>
 
-    <!-- Importação do arquivo JavaScript para manipulação de dados e eventos na página -->
     <script src="js/script.js"></script>
     <script>
-        // Função para mostrar/ocultar a barra lateral
-        function toggleSidebar() {
-            document.getElementById("sidebar").classList.toggle("active");
-        }
-
-        // Função para mostrar/ocultar a seleção de imagem
-        function toggleImageSelection() {
-            document.getElementById("image-selection").classList.toggle("hidden");
-        }
-
-        // Função para selecionar e salvar a imagem de perfil no localStorage
-        function selectProfilePicture(imagePath) {
-            localStorage.setItem('userPhoto', imagePath); // Salva o caminho da imagem no localStorage
-            updateProfilePicture(imagePath); // Atualiza a imagem do usuário na página
-            toggleImageSelection(); // Fecha o seletor de imagens
-        }
-
-        // Função para atualizar a imagem de perfil na página
-        function updateProfilePicture(imagePath) {
-            const profilePicture = document.getElementById("profile-picture");
-            if (profilePicture) {
-                profilePicture.src = imagePath; // Define o caminho da imagem selecionada
+        let lastScrollPosition = 0;
+        const header = document.querySelector('.header-rectangle');
+    
+        window.addEventListener('scroll', () => {
+            let currentScrollPosition = window.pageYOffset;
+    
+            if (currentScrollPosition > lastScrollPosition) {
+                header.style.top = '-80px'; // Esconde o menu ao rolar para baixo
+            } else {
+                header.style.top = '0'; // Mostra o menu ao rolar para cima
             }
-        }
-
-        // Carregar a imagem de perfil salva no localStorage ao carregar a página
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedPhoto = localStorage.getItem('userPhoto'); // Obtém o caminho da imagem salva
-            if (savedPhoto) {
-                updateProfilePicture(savedPhoto); // Se houver uma imagem salva, exibe-a
-            }
+            
+            lastScrollPosition = currentScrollPosition;
         });
     </script>
 </body>

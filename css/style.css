@@ -1,4 +1,4 @@
-/* Retângulo rosa na parte superior da página */
+/* Ajuste no estilo do header */
 .header-rectangle {
     width: 100%;
     height: 80px;
@@ -9,6 +9,43 @@
     z-index: 1000;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+/* Ajuste nos elementos do cabeçalho */
+.left-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.add-streak-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #D8BFD8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+
+
+/* Ajuste no contêiner da foto do usuário */
+.user-photo {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding-right: 20px; /* Ajusta a foto mais para dentro da barra */
+}
+
+.user-photo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 /* Estilo do botão de voltar */
