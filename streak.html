@@ -38,7 +38,7 @@
             <div class="streak-buttons">
                 <button onclick="editStreak()">Editar Streak</button>
                 <!-- Botão atualizado para abrir o modal de confirmação -->
-                <button onclick="openDeleteConfirmation()">Excluir Streak</button>
+                <button onclick="openDeleteStreakConfirmation()">Excluir Streak</button>
             </div>
             <div id="calendar-container">
                 <h2>Calendário de Check-ins</h2>
@@ -85,6 +85,15 @@
         </div>
     </div>
 
+    <!-- Modal de confirmação de exclusão da streak -->
+    <div id="confirmStreakDeleteModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p>Deseja realmente excluir esta streak?</p>
+            <button onclick="confirmDeleteStreak()">Sim, excluir</button>
+            <button onclick="closeStreakModal()">Cancelar</button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/streak.js"></script>
     <script>
@@ -107,16 +116,6 @@
             if (profilePicture) {
                 profilePicture.src = imagePath;
             }
-        }
-
-        // Exibe o modal de confirmação de exclusão
-        function openDeleteConfirmation() {
-            document.getElementById("confirmModal").style.display = "flex";
-        }
-
-        // Fecha o modal de confirmação de exclusão
-        function closeModal() {
-            document.getElementById("confirmModal").style.display = "none";
         }
 
         document.addEventListener('DOMContentLoaded', () => {

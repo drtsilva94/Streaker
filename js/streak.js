@@ -44,8 +44,8 @@ function editStreak() {
     }
 }
 
-// Exclui a streak
-function deleteStreak() {
+// Função para confirmar e excluir a streak
+function confirmDeleteStreak() {
     streaks.splice(streakIndex, 1);
     localStorage.setItem('streaks', JSON.stringify(streaks));
     window.location.href = 'index.html';
@@ -109,19 +109,20 @@ function renderCalendar() {
     }
 }
 
-function openDeleteConfirmation() {
-    document.getElementById("confirmModal").style.display = "flex"; // Mostra o modal
+function openDeleteStreakConfirmation() {
+    document.getElementById("confirmStreakDeleteModal").style.display = "flex"; // Mostra o modal de confirmação de exclusão da streak
 }
 
-function closeModal() {
-    document.getElementById("confirmModal").style.display = "none"; // Fecha o modal
+function closeStreakModal() {
+    document.getElementById("confirmStreakDeleteModal").style.display = "none"; // Fecha o modal de confirmação de exclusão da streak
 }
-// Abre o modal de confirmação
+
+// Abre o modal de confirmação de exclusão de check-in
 function openModal() {
     document.getElementById("confirmModal").style.display = "block";
 }
 
-// Fecha o modal de confirmação
+// Fecha o modal de confirmação de exclusão de check-in
 function closeModal() {
     document.getElementById("confirmModal").style.display = "none";
     selectedDateToDelete = null; // Reseta a data selecionada para exclusão
@@ -130,7 +131,6 @@ function closeModal() {
 // Confirma a exclusão do check-in
 function confirmDeleteCheckin() {
     if (selectedDateToDelete) {
-        // Remove o check-in e atualiza o localStorage
         streak.checkDates = streak.checkDates.filter(d => d !== selectedDateToDelete);
         localStorage.setItem('streaks', JSON.stringify(streaks));
         renderCalendar(); // Re-renderiza o calendário para atualizar a visualização
